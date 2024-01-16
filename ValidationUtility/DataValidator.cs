@@ -8,6 +8,9 @@ namespace ValidationUtility
 {
     public static class DataValidator
     {
+        /// <summary>
+        /// Validates data based on dataField configuration.
+        /// </summary>
         public static object? Validate(DataField dataField, object fieldValue)
         {
             object result = fieldValue;

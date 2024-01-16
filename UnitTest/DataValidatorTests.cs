@@ -11,7 +11,25 @@ namespace UnitTest
         public void Setup() { }
 
         [Test]
-        public void DateValidation_Test()
+        public void DateValidation_TestValidDate()
+        {
+            var dataField = new DataField()
+            {
+                DataFormatType = DataFormatType.Date,
+                InvalidDataAction = DataFormatInvalidActionType.Reject,
+                GeneralFormat = "yyyy-MM-dd"
+            };
+
+            string inputValue = "2024-01-01";
+
+            // Test date format validation
+            // Should return result in DateTime data type
+            DateTime outputDate = (DateTime)DataValidator.Validate(dataField, inputValue);
+            Assert.AreEqual(outputDate, DateTime.Parse(inputValue));
+        }
+
+        [Test]
+        public void DateValidation_TestRejectException()
         {
             var dataField = new DataField()
             {
